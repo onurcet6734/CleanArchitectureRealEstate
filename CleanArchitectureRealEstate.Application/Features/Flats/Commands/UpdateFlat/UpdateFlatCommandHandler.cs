@@ -24,7 +24,7 @@ namespace CleanArchitectureRealEstate.Application.Features.Flats.Commands.Update
 
         public async Task<Result> Handle(UpdateFlatCommand request, CancellationToken cancellationToken)
         {
-            var flat = await _flatRepository.GetByIdAsync(request.FlatId, cancellationToken);
+            var flat = await _flatRepository.GetByIdAsync(request.Id, cancellationToken);
             if (flat is null)
                 return Result.Failure("Flat not found");
 

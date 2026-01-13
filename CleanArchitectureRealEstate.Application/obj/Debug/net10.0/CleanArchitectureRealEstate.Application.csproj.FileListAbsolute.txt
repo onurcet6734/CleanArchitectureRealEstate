@@ -13,3 +13,4 @@ C:\CleanArchitectureRealEstate\CleanArchitectureRealEstate.Application\obj\Debug
 C:\CleanArchitectureRealEstate\CleanArchitectureRealEstate.Application\obj\Debug\net10.0\refint\CleanArchitectureRealEstate.Application.dll
 C:\CleanArchitectureRealEstate\CleanArchitectureRealEstate.Application\obj\Debug\net10.0\CleanArchitectureRealEstate.Application.pdb
 C:\CleanArchitectureRealEstate\CleanArchitectureRealEstate.Application\obj\Debug\net10.0\ref\CleanArchitectureRealEstate.Application.dll
+C:\CleanArchitectureRealEstate\CleanArchitectureRealEstate.Application\obj\Debug\net10.0\CleanArchitectureRealEstate.Application.sourcelink.json

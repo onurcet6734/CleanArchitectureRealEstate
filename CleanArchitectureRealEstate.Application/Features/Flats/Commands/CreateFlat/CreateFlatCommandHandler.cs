@@ -34,11 +34,13 @@ namespace CleanArchitectureRealEstate.Application.Features.Flats.Commands.Create
 
         public async Task<FlatDto> Handle(CreateFlatCommand request, CancellationToken cancellationToken)
         {
+            // I m going to active these codes soon...
             var userId = _currentUserService.UserId;
             var user = await _userRepository.GetByIdAsync(userId, cancellationToken);
             if (user is null)
                 throw new NotFoundException(nameof(User), userId);
 
+            //int userId = 1;
             var flat = new Flat
             {
                 UserId = userId,

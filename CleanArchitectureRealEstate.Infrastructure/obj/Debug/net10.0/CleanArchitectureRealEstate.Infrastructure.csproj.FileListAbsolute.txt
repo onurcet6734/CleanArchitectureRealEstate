@@ -17,3 +17,4 @@ C:\CleanArchitectureRealEstate\CleanArchitectureRealEstate.Infrastructure\obj\De
 C:\CleanArchitectureRealEstate\CleanArchitectureRealEstate.Infrastructure\obj\Debug\net10.0\ref\CleanArchitectureRealEstate.Infrastructure.dll
 C:\CleanArchitectureRealEstate\CleanArchitectureRealEstate.Infrastructure\bin\Debug\net10.0\CleanArchitectureRealEstate.Infrastructure.runtimeconfig.json
 C:\CleanArchitectureRealEstate\CleanArchitectureRealEstate.Infrastructure\obj\Debug\net10.0\CleanArchitectureRealEstate.Infrastructure.genruntimeconfig.cache
+C:\CleanArchitectureRealEstate\CleanArchitectureRealEstate.Infrastructure\obj\Debug\net10.0\CleanArchitectureRealEstate.Infrastructure.sourcelink.json

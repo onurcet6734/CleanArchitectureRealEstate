@@ -2,9 +2,6 @@
 using CleanArchitectureRealEstate.Application.Common.Interfaces.Services;
 using CleanArchitectureRealEstate.Application.Common.Models;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CleanArchitectureRealEstate.Application.Features.Flats.Commands.DeleteFlat
 {
@@ -23,15 +20,12 @@ namespace CleanArchitectureRealEstate.Application.Features.Flats.Commands.Delete
 
         public async Task<Result> Handle(DeleteFlatCommand request, CancellationToken cancellationToken)
         {
-            var flat = await _flatRepository.GetByIdAsync(request.FlatId, cancellationToken);
+            var flat = await _flatRepository.GetByIdAsync(request.Id, cancellationToken);
+
             if (flat is null)
                 return Result.Failure("Flat not found");
 
-            if (flat.User.Id != _currentUser.UserId)
-                return Result.Failure("Unauthorized");
-
-            flat.IsDeleted = true;
-            flat.Updated = DateTime.UtcNow;
+            await _flatRepository.DeleteAsync(flat, cancellationToken);
 
             return Result.Success();
         }

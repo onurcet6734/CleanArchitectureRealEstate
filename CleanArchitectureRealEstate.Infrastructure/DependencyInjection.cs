@@ -18,10 +18,16 @@ namespace CleanArchitectureRealEstate.Infrastructure
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddScoped<IFlatRepository, FlatRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
 
+            services.AddHttpContextAccessor();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IFlatRepository, FlatRepository>();
+
+            services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<ICurrentUserService, CurrentUserService>();
+
+            services.AddScoped<IPasswordHasher, PasswordHasher>();
+
 
             return services;
         }

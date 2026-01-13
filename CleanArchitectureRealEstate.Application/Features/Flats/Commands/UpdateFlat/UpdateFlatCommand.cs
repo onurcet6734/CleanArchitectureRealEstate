@@ -8,8 +8,8 @@ namespace CleanArchitectureRealEstate.Application.Features.Flats.Commands.Update
 {
     public class UpdateFlatCommand : IRequest<Result>
     {
-        public int FlatId { get; set; }
+        public int Id { get; set; }
         public decimal Price { get; set; }
-        public string Status { get; set; } = null!;
+        public string Status { get; set; } = default!;
     }
 }

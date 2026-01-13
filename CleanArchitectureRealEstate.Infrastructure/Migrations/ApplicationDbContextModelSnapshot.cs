@@ -22,7 +22,42 @@ namespace CleanArchitectureRealEstate.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CleanArchitectureRealEstate.Domain.Entities.Flat", b =>
+            modelBuilder.Entity("CleanArchitectureRealEstate.Domain.Entities.FlatImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FlatId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsCover")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("Updated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FlatId");
+
+                    b.ToTable("FlatImages");
+                });
+
+            modelBuilder.Entity("Flat", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,16 +71,14 @@ namespace CleanArchitectureRealEstate.Infrastructure.Migrations
 
                     b.Property<string>("City")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Currency")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -53,8 +86,7 @@ namespace CleanArchitectureRealEstate.Infrastructure.Migrations
 
                     b.Property<string>("District")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -65,8 +97,7 @@ namespace CleanArchitectureRealEstate.Infrastructure.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("Updated")
                         .HasColumnType("datetime2");
@@ -74,19 +105,14 @@ namespace CleanArchitectureRealEstate.Infrastructure.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId1")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
-                    b.HasIndex("UserId1");
-
                     b.ToTable("Flats");
                 });
 
-            modelBuilder.Entity("CleanArchitectureRealEstate.Domain.Entities.User", b =>
+            modelBuilder.Entity("User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -113,6 +139,11 @@ namespace CleanArchitectureRealEstate.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
                     b.Property<string>("RefreshToken")
                         .HasColumnType("nvarchar(max)");
 
@@ -122,25 +153,40 @@ namespace CleanArchitectureRealEstate.Infrastructure.Migrations
                     b.Property<DateTime?>("Updated")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Email")
                         .IsUnique();
 
+                    b.HasIndex("Username")
+                        .IsUnique();
+
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("CleanArchitectureRealEstate.Domain.Entities.Flat", b =>
+            modelBuilder.Entity("CleanArchitectureRealEstate.Domain.Entities.FlatImage", b =>
                 {
-                    b.HasOne("CleanArchitectureRealEstate.Domain.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                    b.HasOne("Flat", "Flat")
+                        .WithMany("Images")
+                        .HasForeignKey("FlatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CleanArchitectureRealEstate.Domain.Entities.User", null)
+                    b.Navigation("Flat");
+                });
+
+            modelBuilder.Entity("Flat", b =>
+                {
+                    b.HasOne("User", "User")
                         .WithMany("Flats")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.OwnsOne("CleanArchitectureRealEstate.Domain.ValueObjects.FlatStatus", "Status", b1 =>
                         {
@@ -149,8 +195,7 @@ namespace CleanArchitectureRealEstate.Infrastructure.Migrations
 
                             b1.Property<string>("Value")
                                 .IsRequired()
-                                .HasMaxLength(50)
-                                .HasColumnType("nvarchar(50)")
+                                .HasColumnType("nvarchar(max)")
                                 .HasColumnName("Status");
 
                             b1.HasKey("FlatId");
@@ -168,8 +213,7 @@ namespace CleanArchitectureRealEstate.Infrastructure.Migrations
 
                             b1.Property<string>("Value")
                                 .IsRequired()
-                                .HasMaxLength(50)
-                                .HasColumnType("nvarchar(50)")
+                                .HasColumnType("nvarchar(max)")
                                 .HasColumnName("Type");
 
                             b1.HasKey("FlatId");
@@ -189,7 +233,12 @@ namespace CleanArchitectureRealEstate.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("CleanArchitectureRealEstate.Domain.Entities.User", b =>
+            modelBuilder.Entity("Flat", b =>
+                {
+                    b.Navigation("Images");
+                });
+
+            modelBuilder.Entity("User", b =>
                 {
                     b.Navigation("Flats");
                 });

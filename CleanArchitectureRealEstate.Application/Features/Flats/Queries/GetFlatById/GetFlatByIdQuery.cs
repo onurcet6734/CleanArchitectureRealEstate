@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MediatR;
+using CleanArchitectureRealEstate.Application.Features.Flats.Dtos;
 
 namespace CleanArchitectureRealEstate.Application.Features.Flats.Queries.GetFlatById
 {
-    internal class GetFlatByIdQuery
-    {
-    }
+    public record GetFlatByIdQuery(int Id) : IRequest<FlatDto>;
 }

@@ -1,5 +1,6 @@
 ﻿using CleanArchitectureRealEstate.Application.Features.Flats.Dtos;
 using MediatR;
+using System.Runtime.CompilerServices;
 
 namespace CleanArchitectureRealEstate.Application.Features.Flats.Commands.CreateFlat
 {

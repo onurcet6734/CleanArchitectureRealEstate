@@ -41,8 +41,25 @@ namespace CleanArchitectureRealEstate.Infrastructure.Persistence.Repositories
 
         public async Task DeleteAsync(Flat flat, CancellationToken cancellationToken)
         {
-            flat.IsDeleted = true;
             await _context.SaveChangesAsync(cancellationToken);
         }
+
+        public async Task<List<Flat>> GetAllAsync(CancellationToken cancellationToken)
+        {
+            return await _context.Flats
+                .AsNoTracking()              // Query olduğu için tracking kapalı (performans)
+                .Where(x => !x.IsDeleted)    // Soft delete filtresi
+                .OrderByDescending(x => x.Created)
+                .ToListAsync(cancellationToken);
+        }
+
+        public async Task<Flat?> GetByIdWithImagesAsync(int id, CancellationToken cancellationToken)
+        {
+            return await _context.Flats
+                .Include(x => x.Images)
+                .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        }
+
+
     }
 }

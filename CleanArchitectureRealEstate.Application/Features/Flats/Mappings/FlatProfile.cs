@@ -14,6 +14,7 @@ namespace CleanArchitectureRealEstate.Application.Features.Flats.Mappings
             CreateMap<Flat, FlatDto>()
                 .ForMember(d => d.Type, o => o.MapFrom(s => s.Type.Value))
                 .ForMember(d => d.Status, o => o.MapFrom(s => s.Status.Value));
+
         }
     }
 }

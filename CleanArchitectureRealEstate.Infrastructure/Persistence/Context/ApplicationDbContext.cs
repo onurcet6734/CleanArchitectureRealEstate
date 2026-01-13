@@ -13,6 +13,8 @@ namespace CleanArchitectureRealEstate.Infrastructure.Persistence.Context
         public DbSet<Flat> Flats => Set<Flat>();
         public DbSet<User> Users => Set<User>();
 
+        public DbSet<FlatImage> FlatImages => Set<FlatImage>();
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
