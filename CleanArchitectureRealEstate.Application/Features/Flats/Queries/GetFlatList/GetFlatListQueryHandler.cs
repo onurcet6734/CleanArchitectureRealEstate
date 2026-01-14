@@ -23,7 +23,7 @@ namespace CleanArchitectureRealEstate.Application.Features.Flats.Queries.GetFlat
             GetFlatListQuery request,
             CancellationToken cancellationToken)
         {
-            var flats = await _flatRepository.GetAllAsync(cancellationToken);
+            var flats = await _flatRepository.GetAllAsync(request.Page , request.Limit , cancellationToken);
             return _mapper.Map<List<FlatDto>>(flats);
         }
     }

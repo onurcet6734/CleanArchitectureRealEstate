@@ -5,5 +5,7 @@ namespace CleanArchitectureRealEstate.Application.Features.Flats.Queries.GetFlat
 {
     public class GetFlatListQuery : IRequest<List<FlatDto>>
     {
+        public int Page { get; set; } = 1;
+        public int Limit { get; set; } = 10;
     }
 }

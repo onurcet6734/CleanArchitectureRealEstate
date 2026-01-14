@@ -21,9 +21,9 @@ namespace CleanArchitectureRealEstate.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetList()
+        public async Task<IActionResult> GetList([FromQuery] GetFlatListQuery query)
         {
-            var result = await _mediator.Send(new GetFlatListQuery());
+            var result = await _mediator.Send(query);
             return Ok(result);
         }
 
@@ -42,6 +42,7 @@ namespace CleanArchitectureRealEstate.WebAPI.Controllers
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, UpdateFlatCommand command)
         {
@@ -52,6 +53,7 @@ namespace CleanArchitectureRealEstate.WebAPI.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

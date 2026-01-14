@@ -1,7 +1,9 @@
-﻿using CleanArchitectureRealEstate.Application.Common.Interfaces.Persistence;
+﻿using Azure;
+using CleanArchitectureRealEstate.Application.Common.Interfaces.Persistence;
 using CleanArchitectureRealEstate.Domain.Entities;
 using CleanArchitectureRealEstate.Infrastructure.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace CleanArchitectureRealEstate.Infrastructure.Persistence.Repositories
 {
@@ -20,12 +22,12 @@ namespace CleanArchitectureRealEstate.Infrastructure.Persistence.Repositories
                 .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
         }
 
-        public async Task<List<Flat>> GetListAsync(CancellationToken cancellationToken)
-        {
-            return await _context.Flats
-                .AsNoTracking()
-                .ToListAsync(cancellationToken);
-        }
+        //public async Task<List<Flat>> GetListAsync(CancellationToken cancellationToken)
+        //{
+        //    return await _context.Flats
+        //        .AsNoTracking()
+        //        .ToListAsync(cancellationToken);
+        //}
 
         public async Task AddAsync(Flat flat, CancellationToken cancellationToken)
         {
@@ -45,13 +47,21 @@ namespace CleanArchitectureRealEstate.Infrastructure.Persistence.Repositories
             await _context.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<List<Flat>> GetAllAsync(CancellationToken cancellationToken)
+        public async Task<List<Flat>> GetAllAsync(int page , int limit,  CancellationToken cancellationToken)
         {
-            return await _context.Flats
-                .AsNoTracking()              // Query olduğu için tracking kapalı (performans)
-                .Where(x => !x.IsDeleted)    // Soft delete filtresi
-                .OrderByDescending(x => x.Created)
-                .ToListAsync(cancellationToken);
+
+            var query = _context.Flats.AsNoTracking(); // Query olduğu için tracking kapalı (performans)
+
+            if (page > 0 && limit > 0)
+            {
+                query = query
+                    .Where(x => !x.IsDeleted)
+                    .OrderByDescending(x => x.Created)
+                    .Skip((page - 1) * limit)
+                    .Take(limit);
+            }
+
+            return await query.ToListAsync(cancellationToken);
         }
 
         public async Task<Flat?> GetByIdWithImagesAsync(int id, CancellationToken cancellationToken)

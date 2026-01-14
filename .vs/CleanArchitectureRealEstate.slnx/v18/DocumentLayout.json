@@ -3,8 +3,32 @@
   "WorkspaceRootPath": "C:\\CleanArchitectureRealEstate\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|c:\\cleanarchitecturerealestate\\cleanarchitecturerealestate.application\\features\\flats\\queries\\getflatlist\\getflatlistqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|solutionrelative:cleanarchitecturerealestate.application\\features\\flats\\queries\\getflatlist\\getflatlistqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|c:\\cleanarchitecturerealestate\\cleanarchitecturerealestate.application\\common\\interfaces\\persistence\\iflatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|solutionrelative:cleanarchitecturerealestate.application\\common\\interfaces\\persistence\\iflatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|c:\\cleanarchitecturerealestate\\cleanarchitecturerealestate.application\\features\\flats\\commands\\updateflat\\updateflatcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|solutionrelative:cleanarchitecturerealestate.application\\features\\flats\\commands\\updateflat\\updateflatcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A17341D-02D4-46C7-94AD-2E906A39B3CC}|CleanArchitectureRealEstate.Infrastructure\\CleanArchitectureRealEstate.Infrastructure.csproj|c:\\cleanarchitecturerealestate\\cleanarchitecturerealestate.infrastructure\\persistence\\repositories\\flatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A17341D-02D4-46C7-94AD-2E906A39B3CC}|CleanArchitectureRealEstate.Infrastructure\\CleanArchitectureRealEstate.Infrastructure.csproj|solutionrelative:cleanarchitecturerealestate.infrastructure\\persistence\\repositories\\flatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|c:\\cleanarchitecturerealestate\\cleanarchitecturerealestate.application\\features\\flats\\queries\\getflatlist\\getflatlistquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|solutionrelative:cleanarchitecturerealestate.application\\features\\flats\\queries\\getflatlist\\getflatlistquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEE8E534-6B72-463D-BE43-D01060684C85}|CleanArchitectureRealEstate.API\\CleanArchitectureRealEstate.WebAPI.csproj|c:\\cleanarchitecturerealestate\\cleanarchitecturerealestate.api\\controllers\\flatscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEE8E534-6B72-463D-BE43-D01060684C85}|CleanArchitectureRealEstate.API\\CleanArchitectureRealEstate.WebAPI.csproj|solutionrelative:cleanarchitecturerealestate.api\\controllers\\flatscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEE8E534-6B72-463D-BE43-D01060684C85}|CleanArchitectureRealEstate.API\\CleanArchitectureRealEstate.WebAPI.csproj|c:\\cleanarchitecturerealestate\\cleanarchitecturerealestate.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEE8E534-6B72-463D-BE43-D01060684C85}|CleanArchitectureRealEstate.API\\CleanArchitectureRealEstate.WebAPI.csproj|solutionrelative:cleanarchitecturerealestate.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|c:\\cleanarchitecturerealestate\\cleanarchitecturerealestate.application\\features\\flats\\commands\\updateflat\\updateflatcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -18,8 +42,34 @@
       "DocumentGroups": [
         {
           "DockedHeight": 135,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IFlatRepository.cs",
+              "DocumentMoniker": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Common\\Interfaces\\Persistence\\IFlatRepository.cs",
+              "RelativeDocumentMoniker": "CleanArchitectureRealEstate.Application\\Common\\Interfaces\\Persistence\\IFlatRepository.cs",
+              "ToolTip": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Common\\Interfaces\\Persistence\\IFlatRepository.cs",
+              "RelativeToolTip": "CleanArchitectureRealEstate.Application\\Common\\Interfaces\\Persistence\\IFlatRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAwAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T17:47:49.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GetFlatListQuery.cs",
+              "DocumentMoniker": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Features\\Flats\\Queries\\GetFlatList\\GetFlatListQuery.cs",
+              "RelativeDocumentMoniker": "CleanArchitectureRealEstate.Application\\Features\\Flats\\Queries\\GetFlatList\\GetFlatListQuery.cs",
+              "ToolTip": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Features\\Flats\\Queries\\GetFlatList\\GetFlatListQuery.cs",
+              "RelativeToolTip": "CleanArchitectureRealEstate.Application\\Features\\Flats\\Queries\\GetFlatList\\GetFlatListQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T17:43:29.782Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -30,7 +80,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "GetFlatListQueryHandler.cs",
+              "DocumentMoniker": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Features\\Flats\\Queries\\GetFlatList\\GetFlatListQueryHandler.cs",
+              "RelativeDocumentMoniker": "CleanArchitectureRealEstate.Application\\Features\\Flats\\Queries\\GetFlatList\\GetFlatListQueryHandler.cs",
+              "ToolTip": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Features\\Flats\\Queries\\GetFlatList\\GetFlatListQueryHandler.cs",
+              "RelativeToolTip": "CleanArchitectureRealEstate.Application\\Features\\Flats\\Queries\\GetFlatList\\GetFlatListQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T17:42:33.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FlatsController.cs",
+              "DocumentMoniker": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.API\\Controllers\\FlatsController.cs",
+              "RelativeDocumentMoniker": "CleanArchitectureRealEstate.API\\Controllers\\FlatsController.cs",
+              "ToolTip": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.API\\Controllers\\FlatsController.cs",
+              "RelativeToolTip": "CleanArchitectureRealEstate.API\\Controllers\\FlatsController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBcAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T17:38:01.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "CleanArchitectureRealEstate.API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "CleanArchitectureRealEstate.API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T17:38:01.132Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "UpdateFlatCommand.cs",
               "DocumentMoniker": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Features\\Flats\\Commands\\UpdateFlat\\UpdateFlatCommand.cs",
               "RelativeDocumentMoniker": "CleanArchitectureRealEstate.Application\\Features\\Flats\\Commands\\UpdateFlat\\UpdateFlatCommand.cs",
@@ -43,13 +132,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "FlatRepository.cs",
+              "DocumentMoniker": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Infrastructure\\Persistence\\Repositories\\FlatRepository.cs",
+              "RelativeDocumentMoniker": "CleanArchitectureRealEstate.Infrastructure\\Persistence\\Repositories\\FlatRepository.cs",
+              "ToolTip": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Infrastructure\\Persistence\\Repositories\\FlatRepository.cs",
+              "RelativeToolTip": "CleanArchitectureRealEstate.Infrastructure\\Persistence\\Repositories\\FlatRepository.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAkwDEAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T14:36:57.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "UpdateFlatCommandHandler.cs",
               "DocumentMoniker": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Features\\Flats\\Commands\\UpdateFlat\\UpdateFlatCommandHandler.cs",
               "RelativeDocumentMoniker": "CleanArchitectureRealEstate.Application\\Features\\Flats\\Commands\\UpdateFlat\\UpdateFlatCommandHandler.cs",
               "ToolTip": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Features\\Flats\\Commands\\UpdateFlat\\UpdateFlatCommandHandler.cs",
               "RelativeToolTip": "CleanArchitectureRealEstate.Application\\Features\\Flats\\Commands\\UpdateFlat\\UpdateFlatCommandHandler.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAADwvyQAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAowCkAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-14T14:35:44.74Z",
               "EditorCaption": ""
