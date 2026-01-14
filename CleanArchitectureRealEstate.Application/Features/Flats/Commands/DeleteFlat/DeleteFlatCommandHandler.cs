@@ -2,20 +2,21 @@
 using CleanArchitectureRealEstate.Application.Common.Interfaces.Services;
 using CleanArchitectureRealEstate.Application.Common.Models;
 using MediatR;
+using System.Security.Cryptography.Pkcs;
 
 namespace CleanArchitectureRealEstate.Application.Features.Flats.Commands.DeleteFlat
 {
     public class DeleteFlatCommandHandler : IRequestHandler<DeleteFlatCommand, Result>
     {
         private readonly IFlatRepository _flatRepository;
-        private readonly ICurrentUserService _currentUser;
+        private readonly ICurrentUserService _currentUserService;
 
         public DeleteFlatCommandHandler(
             IFlatRepository flatRepository,
-            ICurrentUserService currentUser)
+            ICurrentUserService currentUserService)
         {
             _flatRepository = flatRepository;
-            _currentUser = currentUser;
+            _currentUserService = currentUserService;
         }
 
         public async Task<Result> Handle(DeleteFlatCommand request, CancellationToken cancellationToken)

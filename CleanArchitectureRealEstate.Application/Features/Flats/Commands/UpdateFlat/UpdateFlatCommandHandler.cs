@@ -28,12 +28,21 @@ namespace CleanArchitectureRealEstate.Application.Features.Flats.Commands.Update
             if (flat is null)
                 return Result.Failure("Flat not found");
 
-            if (flat.User.Id != _currentUser.UserId)
+            if (flat.UserId != _currentUser.UserId)
                 return Result.Failure("Unauthorized");
 
+            flat.Title = request.Title;
+            flat.Description = request.Description;
             flat.Price = request.Price;
+            flat.Currency = request.Currency;
+            flat.City = request.City; ;
+            flat.District = request.District;
+            flat.AddressLine = request.AddressLine;
+            flat.Type = FlatType.From(request.Type);
             flat.Status = FlatStatus.From(request.Status);
             flat.Updated = DateTime.UtcNow;
+
+            await _flatRepository.UpdateAsync(flat, cancellationToken);
 
             return Result.Success();
         }

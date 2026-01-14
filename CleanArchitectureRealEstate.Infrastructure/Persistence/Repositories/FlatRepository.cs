@@ -35,12 +35,13 @@ namespace CleanArchitectureRealEstate.Infrastructure.Persistence.Repositories
 
         public async Task UpdateAsync(Flat flat, CancellationToken cancellationToken)
         {
-            _context.Flats.Update(flat);
+            //_context.Flats.Update(flat);
             await _context.SaveChangesAsync(cancellationToken);
         }
 
         public async Task DeleteAsync(Flat flat, CancellationToken cancellationToken)
         {
+            _context.Flats.Remove(flat);
             await _context.SaveChangesAsync(cancellationToken);
         }
 
