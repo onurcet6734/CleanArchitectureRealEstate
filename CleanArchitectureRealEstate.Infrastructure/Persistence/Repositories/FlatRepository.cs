@@ -1,9 +1,7 @@
-﻿using Azure;
-using CleanArchitectureRealEstate.Application.Common.Interfaces.Persistence;
-using CleanArchitectureRealEstate.Domain.Entities;
+﻿using CleanArchitectureRealEstate.Application.Common.Interfaces.Persistence;
+using CleanArchitectureRealEstate.Application.Features.Flats.Queries.GetFlatList;
 using CleanArchitectureRealEstate.Infrastructure.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 
 namespace CleanArchitectureRealEstate.Infrastructure.Persistence.Repositories
 {
@@ -47,19 +45,49 @@ namespace CleanArchitectureRealEstate.Infrastructure.Persistence.Repositories
             await _context.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<List<Flat>> GetAllAsync(int page , int limit,  CancellationToken cancellationToken)
+        public async Task<List<Flat>> GetAllAsync(
+            GetFlatListQuery request,
+            CancellationToken cancellationToken)
         {
+            var query = _context.Flats
+                .AsNoTracking()
+                .Where(x => !x.IsDeleted);
 
-            var query = _context.Flats.AsNoTracking(); // Query olduğu için tracking kapalı (performans)
+            // Range Filters
+            if (request.MinPrice is not null)
+                query = query.Where(x => x.Price >= request.MinPrice);
 
-            if (page > 0 && limit > 0)
-            {
-                query = query
-                    .Where(x => !x.IsDeleted)
-                    .OrderByDescending(x => x.Created)
-                    .Skip((page - 1) * limit)
-                    .Take(limit);
-            }
+            if (request.MaxPrice is not null)
+                query = query.Where(x => x.Price <= request.MaxPrice);
+
+            // String Filters
+            if (!string.IsNullOrWhiteSpace(request.City))
+                query = query.Where(x => x.City == request.City);
+
+            if (!string.IsNullOrWhiteSpace(request.District))
+                query = query.Where(x => x.District == request.District);
+
+            if (!string.IsNullOrWhiteSpace(request.Title))
+                query = query.Where(x => x.Title.Contains(request.Title));
+
+            if (!string.IsNullOrWhiteSpace(request.AddressLine))
+                query = query.Where(x => x.AddressLine.Contains(request.AddressLine));
+
+            if (!string.IsNullOrWhiteSpace(request.Description))
+                query = query.Where(x => x.Description.Contains(request.Description));
+
+            if (!string.IsNullOrWhiteSpace(request.Status))
+                query = query.Where(x => x.Status.Value == request.Status);
+
+            if (!string.IsNullOrWhiteSpace(request.Type))
+                query = query.Where(x => x.Type.Value == request.Type);
+
+
+            // Pagination
+            query = query
+                .OrderByDescending(x => x.Created)
+                .Skip((request.Page - 1) * request.Limit)
+                .Take(request.Limit);
 
             return await query.ToListAsync(cancellationToken);
         }
