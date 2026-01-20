@@ -3,28 +3,16 @@
   "WorkspaceRootPath": "C:\\CleanArchitectureRealEstate\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|c:\\cleanarchitecturerealestate\\cleanarchitecturerealestate.application\\features\\flats\\queries\\getflatlist\\getflatlistqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|solutionrelative:cleanarchitecturerealestate.application\\features\\flats\\queries\\getflatlist\\getflatlistqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BEE8E534-6B72-463D-BE43-D01060684C85}|CleanArchitectureRealEstate.API\\CleanArchitectureRealEstate.WebAPI.csproj|c:\\cleanarchitecturerealestate\\cleanarchitecturerealestate.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEE8E534-6B72-463D-BE43-D01060684C85}|CleanArchitectureRealEstate.API\\CleanArchitectureRealEstate.WebAPI.csproj|solutionrelative:cleanarchitecturerealestate.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|c:\\cleanarchitecturerealestate\\cleanarchitecturerealestate.application\\features\\flats\\queries\\getflatlist\\getflatlistquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|solutionrelative:cleanarchitecturerealestate.application\\features\\flats\\queries\\getflatlist\\getflatlistquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BEE8E534-6B72-463D-BE43-D01060684C85}|CleanArchitectureRealEstate.API\\CleanArchitectureRealEstate.WebAPI.csproj|c:\\cleanarchitecturerealestate\\cleanarchitecturerealestate.api\\controllers\\flatimagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEE8E534-6B72-463D-BE43-D01060684C85}|CleanArchitectureRealEstate.API\\CleanArchitectureRealEstate.WebAPI.csproj|solutionrelative:cleanarchitecturerealestate.api\\controllers\\flatimagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|c:\\cleanarchitecturerealestate\\cleanarchitecturerealestate.application\\common\\interfaces\\persistence\\iflatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|solutionrelative:cleanarchitecturerealestate.application\\common\\interfaces\\persistence\\iflatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|c:\\cleanarchitecturerealestate\\cleanarchitecturerealestate.application\\features\\flats\\dtos\\flatdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|solutionrelative:cleanarchitecturerealestate.application\\features\\flats\\dtos\\flatdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8A17341D-02D4-46C7-94AD-2E906A39B3CC}|CleanArchitectureRealEstate.Infrastructure\\CleanArchitectureRealEstate.Infrastructure.csproj|c:\\cleanarchitecturerealestate\\cleanarchitecturerealestate.infrastructure\\persistence\\repositories\\flatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8A17341D-02D4-46C7-94AD-2E906A39B3CC}|CleanArchitectureRealEstate.Infrastructure\\CleanArchitectureRealEstate.Infrastructure.csproj|solutionrelative:cleanarchitecturerealestate.infrastructure\\persistence\\repositories\\flatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05025BCA-5D6B-2931-2706-AC025D4D1EBC}|CleanArchitectureRealEstate.Domain\\CleanArchitectureRealEstate.Domain.csproj|c:\\cleanarchitecturerealestate\\cleanarchitecturerealestate.domain\\entities\\flat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05025BCA-5D6B-2931-2706-AC025D4D1EBC}|CleanArchitectureRealEstate.Domain\\CleanArchitectureRealEstate.Domain.csproj|solutionrelative:cleanarchitecturerealestate.domain\\entities\\flat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|c:\\cleanarchitecturerealestate\\cleanarchitecturerealestate.application\\features\\flatimages\\queries\\getflatimagelist\\getflatimagelistquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41B16B91-AB45-4BDA-87AD-D1A41FD035A8}|CleanArchitectureRealEstate.Application\\CleanArchitectureRealEstate.Application.csproj|solutionrelative:cleanarchitecturerealestate.application\\features\\flatimages\\queries\\getflatimagelist\\getflatimagelistquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,8 +21,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 198,
-          "SelectedChildIndex": 7,
+          "DockedHeight": 141,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -43,94 +31,57 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 89,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Flat.cs",
-              "DocumentMoniker": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Domain\\Entities\\Flat.cs",
-              "RelativeDocumentMoniker": "CleanArchitectureRealEstate.Domain\\Entities\\Flat.cs",
-              "ToolTip": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Domain\\Entities\\Flat.cs",
-              "RelativeToolTip": "CleanArchitectureRealEstate.Domain\\Entities\\Flat.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAA0AAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.API\\Program.cs",
+              "RelativeDocumentMoniker": "CleanArchitectureRealEstate.API\\Program.cs",
+              "ToolTip": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.API\\Program.cs",
+              "RelativeToolTip": "CleanArchitectureRealEstate.API\\Program.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T01:36:50.046Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GetFlatListQuery.cs",
-              "DocumentMoniker": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Features\\Flats\\Queries\\GetFlatList\\GetFlatListQuery.cs",
-              "RelativeDocumentMoniker": "CleanArchitectureRealEstate.Application\\Features\\Flats\\Queries\\GetFlatList\\GetFlatListQuery.cs",
-              "ToolTip": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Features\\Flats\\Queries\\GetFlatList\\GetFlatListQuery.cs",
-              "RelativeToolTip": "CleanArchitectureRealEstate.Application\\Features\\Flats\\Queries\\GetFlatList\\GetFlatListQuery.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAUAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T01:35:50.886Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FlatRepository.cs",
-              "DocumentMoniker": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Infrastructure\\Persistence\\Repositories\\FlatRepository.cs",
-              "RelativeDocumentMoniker": "CleanArchitectureRealEstate.Infrastructure\\Persistence\\Repositories\\FlatRepository.cs",
-              "ToolTip": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Infrastructure\\Persistence\\Repositories\\FlatRepository.cs",
-              "RelativeToolTip": "CleanArchitectureRealEstate.Infrastructure\\Persistence\\Repositories\\FlatRepository.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAArwEkAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T01:30:53.823Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FlatDto.cs",
-              "DocumentMoniker": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Features\\Flats\\Dtos\\FlatDto.cs",
-              "RelativeDocumentMoniker": "CleanArchitectureRealEstate.Application\\Features\\Flats\\Dtos\\FlatDto.cs",
-              "ToolTip": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Features\\Flats\\Dtos\\FlatDto.cs",
-              "RelativeToolTip": "CleanArchitectureRealEstate.Application\\Features\\Flats\\Dtos\\FlatDto.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAEwBIAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T01:31:17.067Z",
+              "WhenOpened": "2026-01-19T10:38:00.303Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "IFlatRepository.cs",
-              "DocumentMoniker": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Common\\Interfaces\\Persistence\\IFlatRepository.cs",
-              "RelativeDocumentMoniker": "CleanArchitectureRealEstate.Application\\Common\\Interfaces\\Persistence\\IFlatRepository.cs",
-              "ToolTip": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Common\\Interfaces\\Persistence\\IFlatRepository.cs",
-              "RelativeToolTip": "CleanArchitectureRealEstate.Application\\Common\\Interfaces\\Persistence\\IFlatRepository.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAA1AAAAAAAAAA==",
+              "Title": "GetFlatImageListQuery.cs",
+              "DocumentMoniker": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Features\\FlatImages\\Queries\\GetFlatImageList\\GetFlatImageListQuery.cs",
+              "RelativeDocumentMoniker": "CleanArchitectureRealEstate.Application\\Features\\FlatImages\\Queries\\GetFlatImageList\\GetFlatImageListQuery.cs",
+              "ToolTip": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Features\\FlatImages\\Queries\\GetFlatImageList\\GetFlatImageListQuery.cs",
+              "RelativeToolTip": "CleanArchitectureRealEstate.Application\\Features\\FlatImages\\Queries\\GetFlatImageList\\GetFlatImageListQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T01:30:42.689Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-19T01:08:42.834Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GetFlatListQueryHandler.cs",
-              "DocumentMoniker": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Features\\Flats\\Queries\\GetFlatList\\GetFlatListQueryHandler.cs",
-              "RelativeDocumentMoniker": "CleanArchitectureRealEstate.Application\\Features\\Flats\\Queries\\GetFlatList\\GetFlatListQueryHandler.cs",
-              "ToolTip": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.Application\\Features\\Flats\\Queries\\GetFlatList\\GetFlatListQueryHandler.cs",
-              "RelativeToolTip": "CleanArchitectureRealEstate.Application\\Features\\Flats\\Queries\\GetFlatList\\GetFlatListQueryHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA7AAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "FlatImageController.cs",
+              "DocumentMoniker": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.API\\Controllers\\FlatImageController.cs",
+              "RelativeDocumentMoniker": "CleanArchitectureRealEstate.API\\Controllers\\FlatImageController.cs",
+              "ToolTip": "C:\\CleanArchitectureRealEstate\\CleanArchitectureRealEstate.API\\Controllers\\FlatImageController.cs",
+              "RelativeToolTip": "CleanArchitectureRealEstate.API\\Controllers\\FlatImageController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T01:30:33.666Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedHeight": 32,
-          "SelectedChildIndex": -1,
-          "Children": [
+              "WhenOpened": "2026-01-19T01:06:14.919Z"
+            },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "Name": "ST:0:0:{be4d7042-ba3f-11d2-840e-00c04f9902c1}"
             }
           ]
         },

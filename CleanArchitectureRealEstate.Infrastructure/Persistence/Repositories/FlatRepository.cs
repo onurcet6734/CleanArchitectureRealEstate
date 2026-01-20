@@ -17,6 +17,7 @@ namespace CleanArchitectureRealEstate.Infrastructure.Persistence.Repositories
         public async Task<Flat?> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
             return await _context.Flats
+                .Include(x=>x.User)
                 .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
         }
 
@@ -51,6 +52,7 @@ namespace CleanArchitectureRealEstate.Infrastructure.Persistence.Repositories
         {
             var query = _context.Flats
                 .AsNoTracking()
+                .Include(x => x.User)
                 .Where(x => !x.IsDeleted);
 
             // Range Filters

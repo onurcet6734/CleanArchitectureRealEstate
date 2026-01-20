@@ -1,58 +1,78 @@
 ﻿using CleanArchitectureRealEstate.Application.Common.Interfaces.Persistence;
 using CleanArchitectureRealEstate.Application.Common.Interfaces.Services;
+using CleanArchitectureRealEstate.Application.Common.Models;
 using CleanArchitectureRealEstate.Application.Common.Models.Auth;
-using CleanArchitectureRealEstate.Domain.Entities;
+using CleanArchitectureRealEstate.Application.Features.Flats.Commands.UpdateFlatPartial;
+using CleanArchitectureRealEstate.Application.Features.Users.Commands.CreateUser;
+using CleanArchitectureRealEstate.Application.Features.Users.Commands.UpdateUser;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-[ApiController]
-[Route("api/auth")]
-public class AuthController : ControllerBase
+namespace CleanArchitectureRealEstate.WebAPI.Controllers
 {
-    private readonly IUserRepository _userRepository;
-    private readonly ITokenService _tokenService;
-    private readonly IPasswordHasher _passwordHasher;
-
-    public AuthController(
-        IUserRepository userRepository,
-        ITokenService tokenService,
-        IPasswordHasher passwordHasher)
+    [ApiController]
+    [Route("api/auth")]
+    public class AuthController : ControllerBase
     {
-        _userRepository = userRepository;
-        _tokenService = tokenService;
-        _passwordHasher = passwordHasher;
-    }
+        private readonly IMediator _mediator;
+        private readonly IUserRepository _userRepository;
+        private readonly ITokenService _tokenService;
+        private readonly IPasswordHasher _passwordHasher;
 
-    // ---------------- REGISTER ----------------
-    [HttpPost("register")]
-    public async Task<IActionResult> Register(RegisterRequest request)
-    {
-        var user = new User
+        public AuthController(IMediator mediator, IUserRepository userRepository, ITokenService tokenService, IPasswordHasher passwordHasher)
         {
-            Username = request.Username,
-            Email = request.Email,
-            PasswordHash = _passwordHasher.Hash(request.Password),
-            Created = DateTime.UtcNow
-        };
+            _mediator = mediator;
+            _userRepository = userRepository;
+            _tokenService = tokenService;
+            _passwordHasher = passwordHasher;
+        }
 
-        await _userRepository.AddAsync(user, HttpContext.RequestAborted);
-        return Ok();
-    }
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(RegisterRequest request)
+        {
+            var command = new CreateUserCommand(
+                request.Username,
+                request.Email,
+                request.Password
+            );
 
-    // ---------------- LOGIN ----------------
-    [HttpPost("login")]
-    public async Task<IActionResult> Login(LoginRequest request)
-    {
-        var user = await _userRepository.GetByUserNameAsync(
-            request.Username,
-            HttpContext.RequestAborted);
+            var result = await _mediator.Send(command);
 
-        if (user is null)
-            return Unauthorized();
+            //if (!result.Succeeded)
+            //    return BadRequest(result.Error);
 
-        if (!_passwordHasher.Verify(request.Password, user.PasswordHash))
-            return Unauthorized();
+            return Ok();
+        }
 
-        var token = _tokenService.GenerateToken(user);
-        return Ok(new { accessToken = token });
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginRequest request)
+        {
+            var user = await _userRepository.GetByUserNameAsync(
+                request.Username,
+                HttpContext.RequestAborted);
+
+            if (user is null)
+                return Unauthorized();
+
+            if (!_passwordHasher.Verify(request.Password, user.PasswordHash))
+                return Unauthorized();
+
+            var token = _tokenService.GenerateToken(user);
+            return Ok(new { accessToken = token });
+        }
+
+        [Authorize]
+        [HttpPatch("register/{id}")]
+        public async Task<IActionResult> Patch(int id, [FromBody] UpdateUserCommand command)
+        {
+            command.Id = id;
+            var result = await _mediator.Send(command);
+
+            if (!result.Succeeded)
+                return BadRequest(result.Error);
+
+            return NoContent();
+        }
     }
 }

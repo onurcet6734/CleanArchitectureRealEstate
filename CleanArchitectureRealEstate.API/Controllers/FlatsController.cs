@@ -1,6 +1,7 @@
 ﻿using CleanArchitectureRealEstate.Application.Features.Flats.Commands.CreateFlat;
 using CleanArchitectureRealEstate.Application.Features.Flats.Commands.DeleteFlat;
 using CleanArchitectureRealEstate.Application.Features.Flats.Commands.UpdateFlat;
+using CleanArchitectureRealEstate.Application.Features.Flats.Commands.UpdateFlatPartial;
 using CleanArchitectureRealEstate.Application.Features.Flats.Queries.GetFlatById;
 using CleanArchitectureRealEstate.Application.Features.Flats.Queries.GetFlatList;
 using MediatR;
@@ -50,6 +51,19 @@ namespace CleanArchitectureRealEstate.WebAPI.Controllers
                 return BadRequest();
 
             await _mediator.Send(command);
+            return NoContent();
+        }
+
+        [Authorize]
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> Patch(int id, [FromBody] UpdateFlatPartialCommand command)
+        {
+            command.Id = id;
+            var result = await _mediator.Send(command);
+
+            if (!result.Succeeded)
+                return BadRequest(result.Error);
+
             return NoContent();
         }
 

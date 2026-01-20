@@ -7,6 +7,6 @@ namespace CleanArchitectureRealEstate.Domain.Exceptions
     public class NotFoundException : DomainException
     {
         public NotFoundException(string entity, object key)
-            : base($"{entity} not found. Key: {key}") { }
+            : base($"{key} not found. Key: {key}") { }
     }
 }

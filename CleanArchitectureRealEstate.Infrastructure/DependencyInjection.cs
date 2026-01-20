@@ -22,6 +22,7 @@ namespace CleanArchitectureRealEstate.Infrastructure
             services.AddHttpContextAccessor();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IFlatRepository, FlatRepository>();
+            services.AddScoped<IFlatImageRepository, FlatImageRepository>();
 
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<ICurrentUserService, CurrentUserService>();

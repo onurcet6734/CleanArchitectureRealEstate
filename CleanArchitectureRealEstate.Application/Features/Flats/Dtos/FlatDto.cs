@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CleanArchitectureRealEstate.Application.Features.Users.Dtos;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -19,6 +20,8 @@ namespace CleanArchitectureRealEstate.Application.Features.Flats.Dtos
         public string Status { get; set; } = default!;
         public DateTime Created { get; set; }
         public DateTime? Updated { get; set; }
+        public UserDto User { get; set; }
+
 
     }
 }

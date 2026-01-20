@@ -1,9 +1,5 @@
 ﻿using AutoMapper;
 using CleanArchitectureRealEstate.Application.Features.Flats.Dtos;
-using CleanArchitectureRealEstate.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CleanArchitectureRealEstate.Application.Features.Flats.Mappings
 {

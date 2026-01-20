@@ -20,7 +20,5 @@ namespace CleanArchitectureRealEstate.Application.Features.Flats.Queries.GetFlat
         public string? Status { get; set; }
         public string? Type { get; set; }
 
-
-
     }
 }
