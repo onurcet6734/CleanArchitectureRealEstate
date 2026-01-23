@@ -23,6 +23,13 @@ namespace CleanArchitectureRealEstate.Infrastructure.Persistence.Configurations
                    .IsRequired()
                    .HasMaxLength(500);
 
+            // Profile
+            builder.Property(x => x.FirstName)
+                   .HasMaxLength(100);
+
+            builder.Property(x => x.LastName)
+                   .HasMaxLength(100);
+
             builder.HasIndex(x => x.Email).IsUnique();
             builder.HasIndex(x => x.Username).IsUnique();
 

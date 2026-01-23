@@ -48,12 +48,15 @@ namespace CleanArchitectureRealEstate.WebAPI.Controllers
         public async Task<IActionResult> Update(int id, UpdateFlatCommand command)
         {
             if (id != command.Id)
-                return BadRequest();
+            {
+                return BadRequest(new { error = "Id mismatch" });
+            }
 
             await _mediator.Send(command);
             return NoContent();
         }
 
+        [Authorize]
         [Authorize]
         [HttpPatch("{id}")]
         public async Task<IActionResult> Patch(int id, [FromBody] UpdateFlatPartialCommand command)
@@ -62,7 +65,9 @@ namespace CleanArchitectureRealEstate.WebAPI.Controllers
             var result = await _mediator.Send(command);
 
             if (!result.Succeeded)
-                return BadRequest(result.Error);
+            {
+                return BadRequest(new { error = result.Error });
+            }
 
             return NoContent();
         }

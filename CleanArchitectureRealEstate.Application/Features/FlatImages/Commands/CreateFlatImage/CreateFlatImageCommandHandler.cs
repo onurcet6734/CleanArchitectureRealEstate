@@ -38,9 +38,9 @@ namespace CleanArchitectureRealEstate.Application.Features.FlatImages.Commands.C
                 throw new InvalidOperationException("Flat bulunamadı.");
             }
 
-            if (request.FlatId != _currentUserService.UserId) {
-                throw new UnauthorizedAccessException("You can not post another user's flat!");
-            }
+            //if (request.FlatId != _currentUserService.UserId) {
+            //    throw new UnauthorizedAccessException("You can not post another user's flat!");
+            //} // TODO : I m gonna compare other flats
 
             var entity = new FlatImage
             {

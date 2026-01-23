@@ -6,7 +6,7 @@ using CleanArchitectureRealEstate.Application.Features.Users.Dtos;
 namespace CleanArchitectureRealEstate.Application.Features.Users.Queries.GetById
 {
     public class GetUserByIdQueryHandler
-    : IRequestHandler<GetUserByIdQuery, UserDto>
+        : IRequestHandler<GetUserByIdQuery, UserDto?>
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
@@ -27,5 +27,4 @@ namespace CleanArchitectureRealEstate.Application.Features.Users.Queries.GetById
             return user is null ? null : _mapper.Map<UserDto>(user);
         }
     }
-
 }

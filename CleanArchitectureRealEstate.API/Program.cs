@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddCors(options =>
-{
+{   
     options.AddPolicy("ReactCorsPolicy", policy =>
         policy
             .WithOrigins("http://localhost:3000")

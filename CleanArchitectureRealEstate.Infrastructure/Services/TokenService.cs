@@ -1,11 +1,14 @@
 ﻿using CleanArchitectureRealEstate.Application.Common.Interfaces.Services;
+using CleanArchitectureRealEstate.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-public class TokenService : ITokenService
+namespace CleanArchitectureRealEstate.Infrastructure.Services
+{
+    public class TokenService : ITokenService
 {
     private readonly IConfiguration _configuration;
 
@@ -38,5 +41,6 @@ public class TokenService : ITokenService
         );
 
         return new JwtSecurityTokenHandler().WriteToken(token);
+    }
     }
 }

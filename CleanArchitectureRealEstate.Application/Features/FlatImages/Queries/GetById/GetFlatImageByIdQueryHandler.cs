@@ -6,7 +6,7 @@ using CleanArchitectureRealEstate.Application.Features.FlatImages.Mappings;
 namespace CleanArchitectureRealEstate.Application.Features.FlatImages.Queries.GetById
 {
     public class GetFlatImageByIdQueryHandler
-        : IRequestHandler<GetFlatImageByIdQuery, FlatImageDto>
+        : IRequestHandler<GetFlatImageByIdQuery, FlatImageDto?>
     {
         private readonly IFlatImageRepository _flatImageRepository;
         private readonly IMapper _mapper;

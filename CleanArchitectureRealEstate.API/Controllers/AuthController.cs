@@ -2,9 +2,9 @@
 using CleanArchitectureRealEstate.Application.Common.Interfaces.Services;
 using CleanArchitectureRealEstate.Application.Common.Models;
 using CleanArchitectureRealEstate.Application.Common.Models.Auth;
-using CleanArchitectureRealEstate.Application.Features.Flats.Commands.UpdateFlatPartial;
 using CleanArchitectureRealEstate.Application.Features.Users.Commands.CreateUser;
 using CleanArchitectureRealEstate.Application.Features.Users.Commands.UpdateUser;
+using CleanArchitectureRealEstate.Application.Features.Users.Queries.GetById;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +20,11 @@ namespace CleanArchitectureRealEstate.WebAPI.Controllers
         private readonly ITokenService _tokenService;
         private readonly IPasswordHasher _passwordHasher;
 
-        public AuthController(IMediator mediator, IUserRepository userRepository, ITokenService tokenService, IPasswordHasher passwordHasher)
+        public AuthController(
+            IMediator mediator,
+            IUserRepository userRepository,
+            ITokenService tokenService,
+            IPasswordHasher passwordHasher)
         {
             _mediator = mediator;
             _userRepository = userRepository;
@@ -29,7 +33,7 @@ namespace CleanArchitectureRealEstate.WebAPI.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(RegisterRequest request)
+        public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
             var command = new CreateUserCommand(
                 request.Username,
@@ -39,40 +43,56 @@ namespace CleanArchitectureRealEstate.WebAPI.Controllers
 
             var result = await _mediator.Send(command);
 
-            //if (!result.Succeeded)
-            //    return BadRequest(result.Error);
-
-            return Ok();
+            return CreatedAtAction(
+                nameof(GetUserById),
+                new { id = result.Id },
+                result);
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginRequest request)
+        public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
             var user = await _userRepository.GetByUserNameAsync(
                 request.Username,
                 HttpContext.RequestAborted);
 
-            if (user is null)
-                return Unauthorized();
-
-            if (!_passwordHasher.Verify(request.Password, user.PasswordHash))
-                return Unauthorized();
+            if (user is null || !_passwordHasher.Verify(request.Password, user.PasswordHash))
+            {
+                return Unauthorized(new { error = "Invalid username or password" });
+            }
 
             var token = _tokenService.GenerateToken(user);
             return Ok(new { accessToken = token });
         }
 
         [Authorize]
-        [HttpPatch("register/{id}")]
-        public async Task<IActionResult> Patch(int id, [FromBody] UpdateUserCommand command)
+        [HttpPatch("users/{id}")]
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UpdateUserCommand command)
         {
             command.Id = id;
             var result = await _mediator.Send(command);
 
             if (!result.Succeeded)
-                return BadRequest(result.Error);
+            {
+                return BadRequest(new { error = result.Error });
+            }
 
             return NoContent();
+        }
+
+        [Authorize]
+        [HttpGet("users/{id}")]
+        public async Task<IActionResult> GetUserById(int id)
+        {
+            var query = new GetUserByIdQuery(id);
+            var result = await _mediator.Send(query);
+
+            if (result is null)
+            {
+                return NotFound(new { error = "User not found" });
+            }
+
+            return Ok(result);
         }
     }
 }

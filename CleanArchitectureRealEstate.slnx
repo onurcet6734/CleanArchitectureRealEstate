@@ -1,6 +1,8 @@
 <Solution>
-  <Project Path="CleanArchitectureRealEstate.API/CleanArchitectureRealEstate.WebAPI.csproj" Id="bee8e534-6b72-463d-be43-d01060684c85" />
-  <Project Path="CleanArchitectureRealEstate.Application/CleanArchitectureRealEstate.Application.csproj" Id="41b16b91-ab45-4bda-87ad-d1a41fd035a8" />
-  <Project Path="CleanArchitectureRealEstate.Domain/CleanArchitectureRealEstate.Domain.csproj" />
-  <Project Path="CleanArchitectureRealEstate.Infrastructure/CleanArchitectureRealEstate.Infrastructure.csproj" Id="8a17341d-02d4-46c7-94ad-2e906a39b3cc" />
+  <Folder Name="/src/">
+    <Project Path="CleanArchitectureRealEstate.API/CleanArchitectureRealEstate.WebAPI.csproj" Id="bee8e534-6b72-463d-be43-d01060684c85" />
+    <Project Path="CleanArchitectureRealEstate.Application/CleanArchitectureRealEstate.Application.csproj" Id="41b16b91-ab45-4bda-87ad-d1a41fd035a8" />
+    <Project Path="CleanArchitectureRealEstate.Domain/CleanArchitectureRealEstate.Domain.csproj" />
+    <Project Path="CleanArchitectureRealEstate.Infrastructure/CleanArchitectureRealEstate.Infrastructure.csproj" Id="8a17341d-02d4-46c7-94ad-2e906a39b3cc" />
+  </Folder>
 </Solution>
