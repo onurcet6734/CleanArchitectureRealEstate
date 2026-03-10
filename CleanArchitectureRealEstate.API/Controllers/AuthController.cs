@@ -18,20 +18,10 @@ namespace CleanArchitectureRealEstate.WebAPI.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly IUserRepository _userRepository;
-        private readonly ITokenService _tokenService;
-        private readonly IPasswordHasher _passwordHasher;
 
-        public AuthController(
-            IMediator mediator,
-            IUserRepository userRepository,
-            ITokenService tokenService,
-            IPasswordHasher passwordHasher)
+        public AuthController(IMediator mediator)
         {
             _mediator = mediator;
-            _userRepository = userRepository;
-            _tokenService = tokenService;
-            _passwordHasher = passwordHasher;
         }
 
         [HttpPost("register")]
