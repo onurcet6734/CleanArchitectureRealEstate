@@ -15,7 +15,7 @@ namespace CleanArchitectureRealEstate.Infrastructure.Persistence.Configurations
                    .IsRequired()
                    .HasMaxLength(200);
 
-            builder.Property(x => x.Username)
+            builder.Property(x => x.UserName)
                    .IsRequired()
                    .HasMaxLength(100);
 
@@ -31,7 +31,7 @@ namespace CleanArchitectureRealEstate.Infrastructure.Persistence.Configurations
                    .HasMaxLength(100);
 
             builder.HasIndex(x => x.Email).IsUnique();
-            builder.HasIndex(x => x.Username).IsUnique();
+            builder.HasIndex(x => x.UserName).IsUnique();
 
             // Relations
             builder.HasMany(x => x.Flats)

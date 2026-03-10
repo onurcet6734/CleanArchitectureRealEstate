@@ -10,6 +10,8 @@ namespace CleanArchitectureRealEstate.Application.Features.Users.Mappings
         {
             CreateMap<User, UserDto>()
                 .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.FullName));
+            
+            CreateMap<User, ProfileDto>();
         }
     }
 }

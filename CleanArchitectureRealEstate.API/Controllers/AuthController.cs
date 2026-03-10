@@ -1,13 +1,15 @@
 ﻿using CleanArchitectureRealEstate.Application.Common.Interfaces.Persistence;
 using CleanArchitectureRealEstate.Application.Common.Interfaces.Services;
-using CleanArchitectureRealEstate.Application.Common.Models;
 using CleanArchitectureRealEstate.Application.Common.Models.Auth;
 using CleanArchitectureRealEstate.Application.Features.Users.Commands.CreateUser;
+using CleanArchitectureRealEstate.Application.Features.Users.Commands.LoginUser;
 using CleanArchitectureRealEstate.Application.Features.Users.Commands.UpdateUser;
 using CleanArchitectureRealEstate.Application.Features.Users.Queries.GetById;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace CleanArchitectureRealEstate.WebAPI.Controllers
 {
@@ -38,7 +40,10 @@ namespace CleanArchitectureRealEstate.WebAPI.Controllers
             var command = new CreateUserCommand(
                 request.Username,
                 request.Email,
-                request.Password
+                request.Password,
+                request.PhoneNumber,
+                request.FirstName,
+                request.LastName
             );
 
             var result = await _mediator.Send(command);
@@ -50,19 +55,10 @@ namespace CleanArchitectureRealEstate.WebAPI.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginRequest request)
+        public async Task<IActionResult> Login([FromBody] LoginUserCommand command)
         {
-            var user = await _userRepository.GetByUserNameAsync(
-                request.Username,
-                HttpContext.RequestAborted);
-
-            if (user is null || !_passwordHasher.Verify(request.Password, user.PasswordHash))
-            {
-                return Unauthorized(new { error = "Invalid username or password" });
-            }
-
-            var token = _tokenService.GenerateToken(user);
-            return Ok(new { accessToken = token });
+            var result = await _mediator.Send(command);
+            return Ok(result);   
         }
 
         [Authorize]

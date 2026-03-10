@@ -1,29 +1,29 @@
-﻿using CleanArchitectureRealEstate.Domain.Entities.Common;
+﻿    using CleanArchitectureRealEstate.Domain.Entities.Common;
+    using Microsoft.AspNetCore.Identity;
 
-namespace CleanArchitectureRealEstate.Domain.Entities
-{
-    public class User : BaseEntity<int>, IAuditEntity
+    namespace CleanArchitectureRealEstate.Domain.Entities
     {
-        // Identity
-        public string Email { get; set; } = null!;
-        public string Username { get; set; } = null!;
-        public string PasswordHash { get; set; } = null!;
+        public class User : IdentityUser<int>  ,  IAuditEntity
+        {
+            public string? FirstName { get; set; }
+            public string? LastName { get; set; }
+            public string FullName => $"{FirstName ?? string.Empty} {LastName ?? string.Empty}".Trim();
+            public string? PasswordResetToken { get; set; }
+            public DateTime? PasswordResetTokenExpires { get; set; }
 
-        // Profile
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
-        public string FullName => $"{FirstName ?? string.Empty} {LastName ?? string.Empty}".Trim();
+        // Verification
+            public bool IsEDevletVerified { get; set; } = false;
+            public DateTime? EDevletVerifiedAt { get; set; }
 
-        // Tokens
-        public string? RefreshToken { get; set; }
-        public DateTime? RefreshTokenExpires { get; set; }
+            // Tokens
+            public string? RefreshToken { get; set; }
+            public DateTime? RefreshTokenExpires { get; set; }
 
-        // Relations
-        public ICollection<Flat> Flats { get; set; } = new List<Flat>();
+            public ICollection<Flat> Flats { get; set; } = new List<Flat>();
 
-        // Audit
-        public DateTime Created { get; set; }
-        public DateTime? Updated { get; set; }
-        public bool IsDeleted { get; set; } = false;
+            // Audit
+            public DateTime Created { get; set; }
+            public DateTime? Updated { get; set; }
+            public bool IsDeleted { get; set; } = false;
+        }
     }
-}

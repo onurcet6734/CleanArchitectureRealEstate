@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Mvc;
-using CleanArchitectureRealEstate.WebAPI.Filters;
+﻿using CleanArchitectureRealEstate.WebAPI.Filters;
 
 namespace CleanArchitectureRealEstate.WebAPI.Extensions
 {

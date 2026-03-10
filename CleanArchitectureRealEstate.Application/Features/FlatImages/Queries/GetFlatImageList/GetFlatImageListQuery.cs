@@ -5,6 +5,7 @@ namespace CleanArchitectureRealEstate.Application.Features.FlatImages.Queries.Ge
 {
     public class GetFlatImageListQuery : IRequest<List<FlatImageDto>>
     {
+        public int? UserId { get; set; }
         public int Page { get; set; } = 1;
         public int Limit { get; set; } = 10;
         public bool? IsCover { get; set; }

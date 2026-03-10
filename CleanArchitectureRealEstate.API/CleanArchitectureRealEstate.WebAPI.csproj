@@ -26,4 +26,8 @@
     <ProjectReference Include="..\CleanArchitectureRealEstate.Infrastructure\CleanArchitectureRealEstate.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\flat-images\" />
+  </ItemGroup>
+
 </Project>

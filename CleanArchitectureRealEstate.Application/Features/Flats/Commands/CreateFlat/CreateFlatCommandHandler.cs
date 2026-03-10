@@ -6,9 +6,6 @@ using CleanArchitectureRealEstate.Domain.Entities;
 using CleanArchitectureRealEstate.Domain.Exceptions;
 using CleanArchitectureRealEstate.Domain.ValueObjects;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CleanArchitectureRealEstate.Application.Features.Flats.Commands.CreateFlat
 {
@@ -16,17 +13,20 @@ namespace CleanArchitectureRealEstate.Application.Features.Flats.Commands.Create
      : IRequestHandler<CreateFlatCommand, FlatDto>
     {
         private readonly IFlatRepository _flatRepository;
+        private readonly IFlatImageRepository _flatImageRepository;
         private readonly IUserRepository _userRepository;
         private readonly ICurrentUserService _currentUserService;
         private readonly IMapper _mapper;
 
         public CreateFlatCommandHandler(
             IFlatRepository flatRepository,
+            IFlatImageRepository flatImageRepository,
             IUserRepository userRepository,
             ICurrentUserService currentUserService,
             IMapper mapper)
         {
             _flatRepository = flatRepository;
+            _flatImageRepository = flatImageRepository;
             _userRepository = userRepository;
             _currentUserService = currentUserService;
             _mapper = mapper;
@@ -34,13 +34,11 @@ namespace CleanArchitectureRealEstate.Application.Features.Flats.Commands.Create
 
         public async Task<FlatDto> Handle(CreateFlatCommand request, CancellationToken cancellationToken)
         {
-            // I m going to active these codes soon...
-            var userId = _currentUserService.UserId;
+            int userId = _currentUserService.UserId;            
             var user = await _userRepository.GetByIdAsync(userId, cancellationToken);
             if (user is null)
                 throw new NotFoundException(nameof(User), userId);
 
-            //int userId = 1;
             var flat = new Flat
             {
                 UserId = userId,
@@ -57,6 +55,24 @@ namespace CleanArchitectureRealEstate.Application.Features.Flats.Commands.Create
             };
 
             await _flatRepository.AddAsync(flat, cancellationToken);
+
+            if (request.ImageUrls is not null && request.ImageUrls.Any())
+            {
+                for (int i = 0; i < request.ImageUrls.Count; i++)
+                {
+                    var image = new FlatImage
+                    {
+                        FlatId = flat.Id,
+                        ImageUrl = request.ImageUrls[i],
+                        Url = request.ImageUrls[i],
+                        IsPrimary = i == 0,
+                        IsCover = i == 0,
+                        Created = DateTime.UtcNow
+                    };
+
+                    await _flatImageRepository.AddAsync(image, cancellationToken);
+                }
+            }
 
             return _mapper.Map<FlatDto>(flat);
         }

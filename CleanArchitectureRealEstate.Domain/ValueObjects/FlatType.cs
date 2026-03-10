@@ -24,7 +24,13 @@ namespace CleanArchitectureRealEstate.Domain.ValueObjects
             if (string.IsNullOrWhiteSpace(value))
                 throw new ArgumentException("Flat type is required");
 
-            return new FlatType(value);
+            return value switch
+            {
+                "Apartment" => Apartment,
+                "Villa" => Villa,
+                "Office" => Office,
+                _ => throw new ArgumentException($"Invalid flat type: {value}")
+            };
         }
 
         public override string ToString() => Value;

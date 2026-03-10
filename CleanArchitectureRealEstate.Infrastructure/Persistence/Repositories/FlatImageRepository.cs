@@ -37,6 +37,16 @@ namespace CleanArchitectureRealEstate.Infrastructure.Persistence.Repositories
                 .ToListAsync(cancellationToken);
         }
 
+        public async Task<List<FlatImage>> GetAllAsync(CancellationToken cancellationToken)
+        {
+            return await _context.FlatImages
+                .Include(x => x.Flat)
+                .ThenInclude(x => x.User)
+                .Where(x => !x.IsDeleted)
+                .OrderByDescending(x => x.Created)
+                .ToListAsync(cancellationToken);
+        }
+
         public async Task AddAsync(FlatImage image, CancellationToken cancellationToken)
         {
             await _context.FlatImages.AddAsync(image, cancellationToken);
@@ -74,6 +84,11 @@ namespace CleanArchitectureRealEstate.Infrastructure.Persistence.Repositories
                  ThenInclude(x => x.User)
                 .Where(x => !x.IsDeleted);
 
+            // 🔹 NEW — User filter
+            if (request.UserId.HasValue)
+            {
+                query = query.Where(x => x.Flat.UserId == request.UserId.Value);
+            }
             if (request.IsCover.HasValue)
             {
                 query = query.Where(x => x.IsCover == request.IsCover.Value);

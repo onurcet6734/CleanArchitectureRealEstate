@@ -1,4 +1,4 @@
-using CleanArchitectureRealEstate.Application;
+﻿using CleanArchitectureRealEstate.Application;
 using CleanArchitectureRealEstate.Infrastructure;
 using CleanArchitectureRealEstate.WebAPI.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -12,15 +12,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddCors(options =>
-{   
+{
     options.AddPolicy("ReactCorsPolicy", policy =>
         policy
             .WithOrigins("http://localhost:3000")
             .AllowAnyHeader()
             .AllowAnyMethod()
-    );
+            .AllowCredentials());
 });
-
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -47,22 +46,39 @@ builder.Services.AddInfrastructure(builder.Configuration);
 
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.IncludeErrorDetails = true;
+
+    options.TokenValidationParameters = new TokenValidationParameters
     {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = jwtSettings["Issuer"],
-            ValidAudience = jwtSettings["Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(jwtSettings["Key"]!)
-            )
-        };
-    });
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+
+        ValidIssuer = jwtSettings["Issuer"],
+        ValidAudience = jwtSettings["Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(jwtSettings["Key"]!)
+        ),
+
+        NameClaimType = System.Security.Claims.ClaimTypes.NameIdentifier,
+        RoleClaimType = System.Security.Claims.ClaimTypes.Role
+    };
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("UserOrAdmin", policy => policy.RequireRole("User", "Admin"));
+});
 
 var app = builder.Build();
 
@@ -73,9 +89,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors("ReactCorsPolicy");
+
 app.UseHttpsRedirection();
+
+app.UseCors("ReactCorsPolicy");
+
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseStaticFiles();
 app.MapControllers();
 app.Run();

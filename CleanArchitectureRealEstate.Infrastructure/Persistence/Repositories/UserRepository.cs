@@ -25,7 +25,7 @@ namespace CleanArchitectureRealEstate.Infrastructure.Persistence.Repositories
         {
             return await _context.Users
                 .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.Username == userName && !x.IsDeleted, cancellationToken);
+                .FirstOrDefaultAsync(x => x.UserName == userName && !x.IsDeleted, cancellationToken);
         }
 
         public async Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken)
@@ -33,6 +33,12 @@ namespace CleanArchitectureRealEstate.Infrastructure.Persistence.Repositories
             return await _context.Users
                 .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.Email == email && !x.IsDeleted, cancellationToken);
+        }
+
+        public async Task<User?> GetByPasswordResetTokenAsync(string token, CancellationToken cancellationToken)
+        {
+            return await _context.Users
+                .FirstOrDefaultAsync(x => x.PasswordResetToken == token && !x.IsDeleted, cancellationToken);
         }
 
         public async Task<bool> ExistsByEmailAsync(string email, CancellationToken cancellationToken)
@@ -44,7 +50,7 @@ namespace CleanArchitectureRealEstate.Infrastructure.Persistence.Repositories
         public async Task<bool> ExistsByUsernameAsync(string username, CancellationToken cancellationToken)
         {
             return await _context.Users
-                .AnyAsync(x => x.Username == username && !x.IsDeleted, cancellationToken);
+                .AnyAsync(x => x.UserName == username && !x.IsDeleted, cancellationToken);
         }
 
         public async Task AddAsync(User user, CancellationToken cancellationToken)

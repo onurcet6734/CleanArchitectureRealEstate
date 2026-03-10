@@ -2,6 +2,7 @@
 using CleanArchitectureRealEstate.Application.Features.Flats.Commands.DeleteFlat;
 using CleanArchitectureRealEstate.Application.Features.Flats.Commands.UpdateFlat;
 using CleanArchitectureRealEstate.Application.Features.Flats.Commands.UpdateFlatPartial;
+using CleanArchitectureRealEstate.Application.Features.Flats.Commands.UploadFlatImage;
 using CleanArchitectureRealEstate.Application.Features.Flats.Queries.GetFlatById;
 using CleanArchitectureRealEstate.Application.Features.Flats.Queries.GetFlatList;
 using MediatR;
@@ -11,11 +12,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace CleanArchitectureRealEstate.WebAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/flats")]
     public class FlatsController : ControllerBase
     {
         private readonly IMediator _mediator;
-
         public FlatsController(IMediator mediator)
         {
             _mediator = mediator;
@@ -57,11 +57,10 @@ namespace CleanArchitectureRealEstate.WebAPI.Controllers
         }
 
         [Authorize]
-        [Authorize]
         [HttpPatch("{id}")]
         public async Task<IActionResult> Patch(int id, [FromBody] UpdateFlatPartialCommand command)
         {
-            command.Id = id;
+            command.Id = id; //command.Id = id; yapılmazsa ,  ASP.NET Core model binding Id değerini payload’dan almaya çalışır. Bunun sebebi model binder’ın birden fazla kaynaktan veri bağlayabilmesidir.
             var result = await _mediator.Send(command);
 
             if (!result.Succeeded)
@@ -69,7 +68,7 @@ namespace CleanArchitectureRealEstate.WebAPI.Controllers
                 return BadRequest(new { error = result.Error });
             }
 
-            return NoContent();
+            return Ok(result);
         }
 
         [Authorize]
@@ -78,6 +77,21 @@ namespace CleanArchitectureRealEstate.WebAPI.Controllers
         {
             await _mediator.Send(new DeleteFlatCommand(id));
             return NoContent();
+        }
+
+        [Authorize]
+        [HttpPost("upload-images")]
+        [Consumes("multipart/form-data")] // ✅ ÖNEMLİ: Multipart olduğunu net söylüyoruz
+        public async Task<IActionResult> UploadImages([FromForm] UploadImageCommand request)
+        {
+
+            var uploadedImages = await _mediator.Send(new UploadImageCommand(request.Files));
+
+            return Ok(new
+            {
+                images = uploadedImages,   // handler’dan gelen liste
+                count = uploadedImages.Count
+            });
         }
     }
 }

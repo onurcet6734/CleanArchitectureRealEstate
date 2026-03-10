@@ -12,5 +12,6 @@ namespace CleanArchitectureRealEstate.Application.Common.Interfaces.Persistence
         Task AddAsync(User user, CancellationToken cancellationToken);
         Task<List<User>> GetAllAsync(CancellationToken cancellationToken);
         Task UpdateAsync(User user, CancellationToken cancellationToken);
+        Task<User?> GetByPasswordResetTokenAsync(string token, CancellationToken requestAborted);
     }
 }

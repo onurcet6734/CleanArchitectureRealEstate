@@ -7,6 +7,7 @@
         public string Email { get; set; } = default!;
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
+        public string PhoneNumber { get; set; } = default!;
         public string FullName { get; set; } = default!;
         public DateTime Created { get; set; }
         public DateTime? Updated { get; set; }

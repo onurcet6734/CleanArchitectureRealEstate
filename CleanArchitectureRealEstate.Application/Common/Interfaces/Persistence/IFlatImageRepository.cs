@@ -7,6 +7,7 @@ namespace CleanArchitectureRealEstate.Application.Common.Interfaces.Persistence
     {
         Task<FlatImage?> GetByIdAsync(int id, CancellationToken cancellationToken);
         Task<List<FlatImage>> GetByFlatIdAsync(int flatId, CancellationToken cancellationToken);
+        Task<List<FlatImage>> GetAllAsync(CancellationToken cancellationToken);
 
         Task<FlatImage?> GetByIdWithFlatAsync(int id, CancellationToken cancellationToken);
 

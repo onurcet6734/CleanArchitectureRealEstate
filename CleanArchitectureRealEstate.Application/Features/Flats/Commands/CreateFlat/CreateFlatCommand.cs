@@ -1,6 +1,5 @@
 ﻿using CleanArchitectureRealEstate.Application.Features.Flats.Dtos;
 using MediatR;
-using System.Runtime.CompilerServices;
 
 namespace CleanArchitectureRealEstate.Application.Features.Flats.Commands.CreateFlat
 {
@@ -18,5 +17,8 @@ namespace CleanArchitectureRealEstate.Application.Features.Flats.Commands.Create
 
         public string Type { get; set; } = default!;
         public string Status { get; set; } = default!;
+
+        public List<string>? ImageUrls { get; set; }
+
     }
 }

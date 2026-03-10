@@ -5,56 +5,64 @@ using CleanArchitectureRealEstate.Application.Features.Flats.Dtos;
 using CleanArchitectureRealEstate.Domain.Entities;
 using MediatR;
 
+
 namespace CleanArchitectureRealEstate.Application.Features.FlatImages.Commands.CreateFlatImage
 {
     public class CreateFlatImageCommandHandler
-        : IRequestHandler<CreateFlatImageCommand, FlatImageDto>
+    : IRequestHandler<CreateFlatImageCommand, FlatImageDto>
     {
         private readonly IFlatImageRepository _flatImageRepository;
         private readonly IFlatRepository _flatRepository;
+        private readonly IFileStorageService _fileStorageService;
         private readonly ICurrentUserService _currentUserService;
 
 
         public CreateFlatImageCommandHandler(
-            IFlatImageRepository flatImageRepository,
-            IFlatRepository flatRepository,
-            ICurrentUserService currentUserService)
+        IFlatImageRepository flatImageRepository,
+        IFlatRepository flatRepository,
+        IFileStorageService fileStorageService,
+        ICurrentUserService currentUserService)
         {
             _flatImageRepository = flatImageRepository;
             _flatRepository = flatRepository;
+            _fileStorageService = fileStorageService;
             _currentUserService = currentUserService;
         }
 
+
         public async Task<FlatImageDto> Handle(
-            CreateFlatImageCommand request,
-            CancellationToken cancellationToken)
+        CreateFlatImageCommand request,
+        CancellationToken cancellationToken)
         {
             var flat = await _flatRepository.GetByIdAsync(
-           request.FlatId,
-           cancellationToken);
+            request.FlatId,
+            cancellationToken);
+
 
             if (flat is null)
-            {
                 throw new InvalidOperationException("Flat bulunamadı.");
-            }
 
-            //if (request.FlatId != _currentUserService.UserId) {
-            //    throw new UnauthorizedAccessException("You can not post another user's flat!");
-            //} // TODO : I m gonna compare other flats
+
+            // 🔥 DOSYA UPLOAD (Infrastructure’da çözülür)
+            var imageUrl = await _fileStorageService
+            .UploadAsync(request.Image, "flat-images");
+
 
             var entity = new FlatImage
             {
-                Url = request.Url.Trim(),
-                IsCover = request.IsCover,
-                FlatId = request.FlatId
+                FlatId = request.FlatId,
+                Url = imageUrl,
+                IsCover = request.IsCover
             };
 
+
             await _flatImageRepository.AddAsync(entity, cancellationToken);
+
 
             return new FlatImageDto
             {
                 Id = entity.Id,
-                Url = entity.Url,    
+                Url = entity.Url,
                 IsCover = entity.IsCover,
                 Flat = new FlatDto
                 {

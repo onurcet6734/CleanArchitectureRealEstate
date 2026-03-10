@@ -1,12 +1,10 @@
 ﻿using CleanArchitectureRealEstate.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace CleanArchitectureRealEstate.Application.Common.Interfaces.Services
 {
     public interface ITokenService
     {
-        string GenerateToken(User User);
+        Task<string> GenerateTokenAsync(User user);
     }
 }

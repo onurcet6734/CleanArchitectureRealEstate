@@ -43,8 +43,11 @@ namespace CleanArchitectureRealEstate.Application.Features.Users.Commands.Create
 
             var user = new User
             {
-                Username = request.Username,
+                UserName = request.Username,
                 Email = request.Email,
+                PhoneNumber = request.PhoneNumber,
+                FirstName = request.FirstName,
+                LastName = request.LastName,
                 PasswordHash = _passwordHasher.Hash(request.Password),
                 Created = DateTime.UtcNow
             };
