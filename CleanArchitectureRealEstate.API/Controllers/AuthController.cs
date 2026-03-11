@@ -25,16 +25,16 @@ namespace CleanArchitectureRealEstate.WebAPI.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterRequest request)
+        public async Task<IActionResult> Register([FromBody] CreateUserCommand command)
         {
-            var command = new CreateUserCommand(
-                request.Username,
-                request.Email,
-                request.Password,
-                request.PhoneNumber,
-                request.FirstName,
-                request.LastName
-            );
+            //var command = new CreateUserCommand(
+            //    request.Username,
+            //    request.Email,
+            //    request.Password,
+            //    request.PhoneNumber,
+            //    request.FirstName,
+            //    request.LastName
+            //);
 
             var result = await _mediator.Send(command);
 
