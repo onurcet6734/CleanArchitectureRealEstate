@@ -18,7 +18,7 @@ namespace CleanArchitectureRealEstate.Application.Features.Users.Commands.UserPa
 
             if (user is null || user.PasswordResetTokenExpires < DateTime.UtcNow)
             {
-                return new { valid = false, error = "Geçersiz veya süresi dolmuş token." }
+                return new { valid = false, error = "Geçersiz veya süresi dolmuş token." };
             }
             return new { valid = true };
         }

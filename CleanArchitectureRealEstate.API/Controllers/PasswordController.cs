@@ -1,12 +1,8 @@
-using CleanArchitectureRealEstate.Application.Common.Interfaces.Persistence;
-using CleanArchitectureRealEstate.Application.Common.Interfaces.Services;
-using CleanArchitectureRealEstate.Application.Common.Models.Auth;
 using CleanArchitectureRealEstate.Application.Features.Users.Commands.UserPassword.Forgot;
 using CleanArchitectureRealEstate.Application.Features.Users.Commands.UserPassword.Reset;
 using CleanArchitectureRealEstate.Application.Features.Users.Commands.UserPassword.ValidateToken;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Cryptography;
 
 namespace CleanArchitectureRealEstate.WebAPI.Controllers
 {
@@ -35,7 +31,7 @@ namespace CleanArchitectureRealEstate.WebAPI.Controllers
         [HttpPost("reset")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordCommand command)
         {
-            var result = _mediator.Send(command);
+            var result = await _mediator.Send(command);
             var errorProperty = result.GetType().GetProperty("error");
 
             if (errorProperty != null)
@@ -47,7 +43,7 @@ namespace CleanArchitectureRealEstate.WebAPI.Controllers
         public async Task<IActionResult> ValidateResetToken([FromBody] ValidateTokenCommand command)
         {
 
-            var result = _mediator.Send(command);
+            var result = await _mediator.Send(command);
             var errorProperty = result.GetType().GetProperty("error");
 
             if (errorProperty != null)
